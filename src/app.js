@@ -2,14 +2,13 @@ import express from 'express'
 import movieManager from './helpers/movieManager.js'
 
 const app = express()
-const data = await movieManager.getMovies()
 
 app.get('/', async (req, res) => {
-  try {
-    const movieList = data.results;
-    const moviePoster = movieList.map(item => item.poster_path);
-
-    res.send(moviePoster);
+  try { 
+    const data = await movieManager.getRandomMovie()
+    const movie = data
+   
+    res.send(movie);
   } catch (error) {
     res.send(error);
   }

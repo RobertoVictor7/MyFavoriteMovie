@@ -1,47 +1,42 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
 class MovieManager {
-    constructor(){
-        this.apiUrl = 'https://api.themoviedb.org/3/movie/top_rated',
-        this.apiKey = process.env.API_KEY
-    }
+  constructor() {
+    this.apiUrl ='https://api.themoviedb.org/3/movie/top_rated?language=pt-BR'
+    this.apiKey = process.env.API_KEY
+  }
 
-    async getMovies() {
-        try {
-            const response = await fetch(this.apiUrl, {
-                headers: {
-                    accept: 'application/json',
-                    Authorization: `Bearer ${this.apiKey}`
-                  }
-            });
+  async getRandomMovie() {
+    try {
+      const response = await fetch(this.apiUrl, {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${this.apiKey}`,
+        },
+      })
 
-            return response.json()
-        }catch(error) {
-            throw error
-        }
-    }
+      const responseBody = await response.json()
+      const movies = responseBody.results
+      const randomMovie = movies[Math.floor(Math.random() * movies.length)]
 
-    async deleteMovie(movieToDelete) {
-        try {
-            const allMovies = await this.getMovies()
-            const movies = allMovies.results
-            const movieName = movies.map(movie => movie.title)
-            const moviesNewList = movieName.filter(movieName => movieName != movieToDelete)
-            
-            console.log(moviesNewList)
-            
-        }catch(error) {
-            throw error
-        }
+      const randomMovieInfo = {
+        originalTitle: randomMovie.original_title,
+        title: randomMovie.title,
+        description: randomMovie.overview,
+        posterPath: randomMovie.poster_path
+      }
+
+      return randomMovieInfo
+
+    } catch (error) {
+      throw error
     }
+  }
+
 }
 
-
-
 const movieManager = new MovieManager()
-
-movieManager.deleteMovie('GoodFellas')
 
 export default movieManager
