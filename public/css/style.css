@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.input__movieName {
+ width: 100%;
+ border-radius: 20px;
+ border: 1px solid;
+ padding: 8px;
+}
+
+.attempts {
+    padding-top: 16px;
+}
+
+.attempts > div {
+    margin-top: 4px;
+    padding: 8px 16px;
+    border: 1px solid black;
+}
+
+
+
+.movie__tip > span {
+    padding: 8px;
+    font-size: 24px;
+}
+
+.correctGuess {
+    background-color: green;
+    color: white;
+}
+
+.wrongGuess {
+    background-color: red;
+    color: white;
+}

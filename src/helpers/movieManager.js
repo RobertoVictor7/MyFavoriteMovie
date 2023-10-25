@@ -23,7 +23,7 @@ class MovieManager {
 
       const randomMovieInfo = {
         originalTitle: randomMovie.original_title,
-        title: randomMovie.title,
+        title: randomMovie.title.toLowerCase(),
         description: randomMovie.overview,
         posterPath: randomMovie.poster_path
       }

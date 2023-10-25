@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Movie Guess</title>
-</head>
-<body>
-    <p>teste Front conectado :)</p>
+  </head>
+  <body>
+    <div class="content">
+      <h1 class="title">Mooovie</h1>
+
+      <div class='movie__tip'></div>
+
+      <form class="movieForm" id="movieForm" onsubmit="sendMovieName(event)">
+        <label for="movieName">Guess a movie</label>
+        <input class="input__movieName" type="text" id="movieName" />
+      </form>
+
+      <div class="attempts"></div>
+    </div>
+
     <script src="./js/script.js" type="text/javascript"></script>
-</body>
+  </body>
 </html>
